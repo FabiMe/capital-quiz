@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Press+Start+2P&family=Roboto+Slab:wght@300&display=swap');
+
+body {
+    background-color: lightblue;
+}
+
 #intro {
     text-align: center;
+    margin-top: 5%;
+    font-family: 'Roboto Slab', serif;
+    font-size: 200%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+    box-sizing: border-box;
+}
+
+#game {
+    text-align: center;
+    margin-top: 5%;
+    font-family: 'Roboto Slab', serif;
+    font-size: 200%;
+}
+
+#game li {
+    list-style-type: none;
 }
