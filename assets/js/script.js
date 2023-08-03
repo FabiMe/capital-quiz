@@ -53,8 +53,8 @@ let currentQuestionIndex = 0; // Index of the current question being displayed
 // Function to load a new question and choices
 function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
-    const randomQuestion = document.getElementById("random-question");
-    randomQuestion.textContent = currentQuestion.question;
+    const questionDisplay = document.getElementById("displayed-question");
+    questionDisplay.textContent = currentQuestion.question;
 
     // Get references to the answer choice buttons
     const choice1Btn = document.getElementById("choice1");
@@ -94,10 +94,14 @@ function handleAnswerClick(event) {
     }
 }
 
-// Function to show the score section
 function showScoreSection() {
     // Get a reference to the "Score" button
     const scoreBtn = document.getElementById("score-btn");
+
+    // Display the player's name along with the final score
+    const playerNameDisplay = document.createElement("p");
+    playerNameDisplay.textContent = `Player Name: ${playerName}`;
+    scoreSection.appendChild(playerNameDisplay);
 
     // Show the score section and hide all other sections
     scoreSection.classList.remove("hide");
@@ -108,24 +112,24 @@ function showScoreSection() {
     const scoreText = document.createElement("p");
     scoreText.textContent = `Your score: ${score} out of ${quizData.length}`;
     scoreSection.appendChild(scoreText);
-
-    // Add an event listener to the "Restart" button
-    const restartBtn = document.getElementById("restart-btn");
-    restartBtn.addEventListener("click", function () {
-        // Reset the quiz
-        currentQuestionIndex = 0;
-        score = 0;
-        loadQuestion();
-
-        // Show the game section and hide all other sections
-        gameSection.classList.remove("hide");
-        gameSection.classList.add("show");
-        hideAllSectionsExcept(gameSection);
-
-        // Clear the previous score text
-        scoreText.textContent = "";
-    });
 }
+
+// Add an event listener to the "Restart" button
+const restartBtn = document.getElementById("restart-btn");
+restartBtn.addEventListener("click", function () {
+    // Reset the quiz
+    currentQuestionIndex = 0;
+    score = 0;
+    loadQuestion();
+
+    // Show the game section and hide all other sections
+    gameSection.classList.remove("hide");
+    gameSection.classList.add("show");
+    hideAllSectionsExcept(gameSection);
+
+    // Clear the previous score text
+    scoreText.textContent = "";
+});
 
 // Add click event listeners to the answer choice buttons
 const choice1Btn = document.getElementById("choice1");
@@ -151,4 +155,28 @@ startBtn.addEventListener("click", function () {
     // Load the first question
     loadQuestion();
 });
+
+let playerName = ""; // Variable to store the player's name
+
+// Function to handle the click event on the "Start Game" button
+function handleStartGameClick() {
+    // Get the player's name from the input field
+    const playerNameInput = document.getElementById("player-name");
+    playerName = playerNameInput.value.trim();
+
+    if (playerName === "") {
+        // If the player's name is empty, show an alert or handle it appropriately
+        alert("Please enter your name to start the game.");
+        return;
+    }
+
+    // Now that we have the player's name, we can proceed with the game
+    // Show the game section and hide all other sections
+    gameSection.classList.remove("hide");
+    gameSection.classList.add("show");
+    hideAllSectionsExcept(gameSection);
+
+    // Load the first question
+    loadQuestion();
+}
 
