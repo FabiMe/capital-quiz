@@ -1,13 +1,13 @@
-
 // Get references to the sections that need to be shown/hidden
 const introSection = document.getElementById("intro");
 const gameSection = document.getElementById("game");
 const scoreSection = document.getElementById("score");
-
-
-// Get a reference to the "Score" button
+const playerNameInput = document.getElementById("player-name");
 const scoreBtn = document.getElementById("score-btn");
+const restartBtn = document.getElementById("restart-btn");
 
+// Get a reference to the "Start Game" button
+const startBtn = document.getElementById("start-btn");
 
 // Quiz questions and answers
 const quizData = [
@@ -43,26 +43,6 @@ const quizData = [
     }
 ];
 
-// Add an event listener to the "Restart" button
-const restartBtn = document.getElementById("restart-btn");
-restartBtn.addEventListener("click", function () {
-    // Reset the quiz
-    currentQuestionIndex = 0;
-    score = 0;
-    loadQuestion();
-
-    // Show the game section and hide all other sections
-    gameSection.classList.remove("hide");
-    gameSection.classList.add("show");
-    hideAllSectionsExcept(gameSection);
-
-    // Clear the previous score text
-    scoreText.textContent = "";
-});
-
-// Variable to store the player's name
-let playerName = "";
-
 // Index of the current question being displayed
 let currentQuestionIndex = 0;
 
@@ -72,53 +52,50 @@ let score = 0;
 // Variable to store the selected answer
 let selectedAnswer = null;
 
+// Declare a variable to store the player name globally
+let playerName = "";
 
-// Add click event listeners to the answer choice buttons
-const choice1Btn = document.getElementById("choice1");
-const choice2Btn = document.getElementById("choice2");
-const choice3Btn = document.getElementById("choice3");
-const choice4Btn = document.getElementById("choice4");
+// Function to handle the click event on the "Start Game" button
+function handleStartGameClick() {
+    // Get the player's name from the input field
+    playerName = playerNameInput.value;
 
-choice1Btn.addEventListener("click", handleAnswerClick);
-choice2Btn.addEventListener("click", handleAnswerClick);
-choice3Btn.addEventListener("click", handleAnswerClick);
-choice4Btn.addEventListener("click", handleAnswerClick);
+    if (playerName.trim() !== "") {
+        gameSection.classList.remove("hide");
+        gameSection.classList.add("show");
+        hideAllSectionsExcept(gameSection);
 
-// Get a reference to the "Start Game" button
-const startBtn = document.getElementById("start-btn");
+        // Load the first question
+        loadQuestion();
+    } else {
+        // Display an error message if the player name is empty
+        alert("Please enter your name before starting the game.");
+    }
+}
 
-// Add an event listener to the "Start Game" button
-startBtn.addEventListener("click", function () {
-    // Show the game section and hide all other sections
-    gameSection.classList.remove("hide");
-    gameSection.classList.add("show");
-    hideAllSectionsExcept(gameSection);
+// Function to handle the click event on the "Score" button
+function handleScoreButtonClick() {
+    // Check if the player name is not empty before proceeding
+    if (playerName.trim() !== "") {
+        // Show the score section and hide all other sections
+        scoreSection.classList.remove("hide");
+        scoreSection.classList.add("show");
+        hideAllSectionsExcept(scoreSection);
 
-    // Load the first question
-    loadQuestion();
-});
+        // Display the player's name along with the final score
+        const playerNameDisplay = document.createElement("p");
+        playerNameDisplay.textContent = `Player Name: ${playerName || "N/A"}`;
+        scoreSection.appendChild(playerNameDisplay);
 
-// Add an event listener to the "Score" button
-scoreBtn.addEventListener("click", handleScoreButtonClick);
-
-function showScoreSection() {
-    // Get a reference to the "Score" button
-    const scoreBtn = document.getElementById("score-btn");
-
-    // Display the player's name along with the final score
-    const playerNameDisplay = document.createElement("p");
-    playerNameDisplay.textContent = `Player Name: ${playerName}`;
-    scoreSection.appendChild(playerNameDisplay);
-
-    // Show the score section and hide all other sections
-    scoreSection.classList.remove("hide");
-    scoreSection.classList.add("show");
-    hideAllSectionsExcept(scoreSection);
-
-    // Display the final score
-    const scoreText = document.createElement("p");
-    scoreText.textContent = `Your score: ${score} out of ${quizData.length}`;
-    scoreSection.appendChild(scoreText);
+        // Display the final score
+        const scoreText = document.createElement("p");
+        const finalScore = calculateFinalScore(); // Implement the logic to calculate the final score
+        scoreText.textContent = `You made ${finalScore} right answers out of ${quizData.length} questions.`;
+        scoreSection.appendChild(scoreText);
+    } else {
+        // Display an error message if the player name is empty
+        alert("Please enter your name before viewing the score.");
+    }
 }
 
 // Function to handle the click event on answer choice buttons
@@ -143,6 +120,7 @@ function handleAnswerClick(event) {
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
+            // No more questions, go to the score area
             showScoreSection();
         }
     }, 2000); // 2000 milliseconds = 2 seconds
@@ -157,27 +135,6 @@ function hideAllSectionsExcept(activeSection) {
             section.classList.remove("show");
         }
     });
-}
-
-// Function to handle the click event on the "Start Game" button
-function handleStartGameClick() {
-    // Get the player's name from the input field
-    const playerNameInput = document.getElementById("player-name");
-    playerName = playerNameInput.value.trim();
-
-    if (playerName === "") {
-        // If the player's name is empty, show an alert or handle it appropriately
-        alert("Please enter your name to start the game.");
-        return;
-    }
-
-    // Show the game section and hide all other sections
-    gameSection.classList.remove("hide");
-    gameSection.classList.add("show");
-    hideAllSectionsExcept(gameSection);
-
-    // Load the first question
-    loadQuestion();
 }
 
 // Function to load a new question and choices
@@ -199,20 +156,48 @@ function loadQuestion() {
     choice4Btn.textContent = currentQuestion.choices[3];
 }
 
-// Function to handle the click event on the "Score" button
-function handleScoreButtonClick() {
-    // Show the score section and hide all other sections
-    scoreSection.classList.remove("hide");
-    scoreSection.classList.add("show");
-    hideAllSectionsExcept(scoreSection);
-
-    // Display the player's name along with the current score progress
-    const playerNameDisplay = document.createElement("p");
-    playerNameDisplay.textContent = `Player Name: ${playerName}`;
-    scoreSection.appendChild(playerNameDisplay);
-
-    // Display the current score progress
-    const scoreProgress = document.createElement("p");
-    scoreProgress.textContent = `Questions completed: ${currentQuestionIndex} out of ${quizData.length}`;
-    scoreSection.appendChild(scoreProgress);
+// Function to calculate the final score
+function calculateFinalScore() {
+    // Implement the logic to calculate the final score based on the user's answers
+    // For example, you can keep track of correct answers in a variable and return it here.
+    return score;
 }
+
+// Add event listeners to the answer choice buttons
+const choice1Btn = document.getElementById("choice1");
+const choice2Btn = document.getElementById("choice2");
+const choice3Btn = document.getElementById("choice3");
+const choice4Btn = document.getElementById("choice4");
+
+choice1Btn.addEventListener("click", handleAnswerClick);
+choice2Btn.addEventListener("click", handleAnswerClick);
+choice3Btn.addEventListener("click", handleAnswerClick);
+choice4Btn.addEventListener("click", handleAnswerClick);
+
+// Add event listener to the "Start Game" button
+startBtn.addEventListener("click", handleStartGameClick);
+
+// Add event listener to the "Score" button
+scoreBtn.addEventListener("click", handleScoreButtonClick);
+
+// Add event listener to the "Restart" button
+restartBtn.addEventListener("click", function () {
+    // Reset the quiz
+    currentQuestionIndex = 0;
+    score = 0;
+    loadQuestion();
+
+    // Show the game section and hide all other sections
+    gameSection.classList.remove("hide");
+    gameSection.classList.add("show");
+    hideAllSectionsExcept(gameSection);
+
+    // Clear the previous score text
+    const playerNameDisplay = document.getElementById("player-name-display");
+    if (playerNameDisplay) {
+        playerNameDisplay.textContent = "";
+    }
+});
+
+// Hide all sections except the intro section initially
+hideAllSectionsExcept(introSection);
