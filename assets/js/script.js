@@ -81,18 +81,27 @@ function handleAnswerClick(event) {
     const selectedAnswer = event.target.innerText;
     // Check if the selected answer is correct
     if (selectedAnswer === currentQuestion.correctAnswer) {
-        score++;
-    }
-    // Move to the next question
-    currentQuestionIndex++;
-
-    // Check if there are more questions, else show the score section
-    if (currentQuestionIndex < quizData.length) {
-        loadQuestion();
+        // Apply correct answer style
+        event.target.classList.add("correct");
+        score++; // Increase the score for the correct answer
     } else {
-        showScoreSection();
+        // Apply wrong answer style
+        event.target.classList.add("wrong");
     }
+
+    setTimeout(function () {
+        event.target.classList.remove("correct", "wrong"); // Remove the styles
+        currentQuestionIndex++; // Move to the next question
+
+        // Check if there are more questions, else show the score section
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            showScoreSection();
+        }
+    }, 2000); // 2000 milliseconds = 2 seconds
 }
+
 
 function showScoreSection() {
     // Get a reference to the "Score" button
@@ -170,7 +179,6 @@ function handleStartGameClick() {
         return;
     }
 
-    // Now that we have the player's name, we can proceed with the game
     // Show the game section and hide all other sections
     gameSection.classList.remove("hide");
     gameSection.classList.add("show");
@@ -180,3 +188,26 @@ function handleStartGameClick() {
     loadQuestion();
 }
 
+// Function to handle the click event on the "Score" button
+function handleScoreButtonClick() {
+    // Show the score section and hide all other sections
+    scoreSection.classList.remove("hide");
+    scoreSection.classList.add("show");
+    hideAllSectionsExcept(scoreSection);
+
+    // Display the player's name along with the current score progress
+    const playerNameDisplay = document.createElement("p");
+    playerNameDisplay.textContent = `Player Name: ${playerName}`;
+    scoreSection.appendChild(playerNameDisplay);
+
+    // Display the current score progress
+    const scoreProgress = document.createElement("p");
+    scoreProgress.textContent = `Questions completed: ${currentQuestionIndex} out of ${quizData.length}`;
+    scoreSection.appendChild(scoreProgress);
+}
+
+// Get a reference to the "Score" button
+const scoreBtn = document.getElementById("score-btn");
+
+// Add an event listener to the "Score" button
+scoreBtn.addEventListener("click", handleScoreButtonClick);

@@ -11,6 +11,81 @@ body {
     font-size: 200%;
 }
 
+#score {
+    text-align: center;
+    margin-top: 5%;
+    font-family: 'Roboto Slab', serif;
+    font-size: 200%;
+}
+
+#score-btn {
+    margin-top: 15%;
+}
+
+#choice1 {
+    text-align: center;
+    width: 10%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+}
+
+#choice1:hover {
+    background-color: black;
+    color: white;
+}
+
+#choice2 {
+    text-align: center;
+    width: 10%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+}
+
+#choice2:hover {
+    background-color: black;
+    color: white;
+}
+
+#choice3 {
+    text-align: center;
+    width: 10%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+}
+
+#choice3:hover {
+    background-color: black;
+    color: white;
+}
+
+#choice4 {
+    text-align: center;
+    width: 10%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+}
+
+#choice4:hover {
+    background-color: black;
+    color: white;
+}
+
 .hide {
     display: none;
 }
@@ -24,9 +99,20 @@ body {
     text-align: center;
     margin-top: 5%;
     font-family: 'Roboto Slab', serif;
-    font-size: 200%;
+    font-size: 250%;
+    font-weight: bold;
 }
 
 #game li {
     list-style-type: none;
+}
+
+/* CSS for the correct answer */
+.correct {
+    background-color: green;
+}
+
+/* CSS for the wrong answer */
+.wrong {
+    background-color: red;
 }
