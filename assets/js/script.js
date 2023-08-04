@@ -60,6 +60,9 @@ let selectedAnswer = null;
 // Declare a variable to store the player name globally
 let playerName = "";
 
+// Add a flag to control button activation
+let buttonsDisabled = false;
+
 // Add event listeners to the answer choice buttons
 const choice1Btn = document.getElementById("choice1");
 const choice2Btn = document.getElementById("choice2");
@@ -142,9 +145,15 @@ function handleScoreButtonClick() {
 }
 /**
  * Function to handle the click event on answer choice buttons
- * @param {*} event 
+ * @param {MouseEvent} click on mouse 
  */
 function handleAnswerClick(event) {
+    // Disable all buttons while showing feedback
+    if (buttonsDisabled) {
+        return;
+    }
+
+    buttonsDisabled = true; // Disable buttons
     const currentQuestion = quizData[currentQuestionIndex];
     selectedAnswer = event.target.innerText;
 
@@ -168,6 +177,8 @@ function handleAnswerClick(event) {
         } else {
             handleScoreButtonClick(); // Show the score section after the last question
         }
+
+        buttonsDisabled = false; // Enable buttons again
     }, 1000); // 1000 milliseconds = 1 second
 }
 /**

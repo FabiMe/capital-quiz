@@ -31,4 +31,18 @@ UX Design
 
 ## Quiz
 
-##
+## Score Area
+
+# Testing
+
+## Browser Testing
+## Manual Testing 
+## Validator Testing
+
+## Bugs
+
+# Credits
+
+## Content
+## Media
+https://www.pexels.com/de-de/foto/blick-auf-die-city-street-258447/ 

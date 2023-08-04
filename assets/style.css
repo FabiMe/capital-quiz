@@ -3,6 +3,7 @@
 
 body {
     background-color: lightblue;
+    margin: 0;
 }
 
 #intro {
@@ -10,17 +11,65 @@ body {
     margin-top: 5%;
     font-family: 'Roboto Slab', serif;
     font-size: 200%;
+    background: url(../assets/images/globe.jpg);
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+#intro h1 {
+    padding-top: 5%;
+    margin: 0;
+    font-size: 300%;
+}
+
+
+#intro p {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
 }
 
 #score {
+    background: url(../assets/images/winner.jpg);
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+#score p {
+    font-size: 400%;
     text-align: center;
-    margin-top: 5%;
     font-family: 'Roboto Slab', serif;
-    font-size: 200%;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: bolder;
+
+}
+
+#restart-btn {
+    text-align: center;
+    width: 20%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
 }
 
 #score-btn {
-    margin-top: 5%;
+    margin-top: 10%;
+    width: 50%;
+    padding: 15px;
+    font-size: 50%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+    font-family: 'Roboto Slab', serif;
 }
 
 #choice1 {
@@ -98,14 +147,30 @@ body {
 
 #game {
     text-align: center;
-    margin-top: 5%;
     font-family: 'Roboto Slab', serif;
-    font-size: 250%;
+    font-size: 300%;
     font-weight: bold;
+    background: url(../assets/images/old-city.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+#displayed-question {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #game li {
     list-style-type: none;
+}
+
+ul {
+    display: initial;
+
 }
 
 /* CSS for the correct answer */
