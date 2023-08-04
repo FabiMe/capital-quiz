@@ -2,12 +2,17 @@
 const introSection = document.getElementById("intro");
 const gameSection = document.getElementById("game");
 const scoreSection = document.getElementById("score");
+
+// Get a reference to the "player-name"
 const playerNameInput = document.getElementById("player-name");
+
+// Get a reference to the Game buttons
+const startBtn = document.getElementById("start-btn");
 const scoreBtn = document.getElementById("score-btn");
 const restartBtn = document.getElementById("restart-btn");
 
-// Get a reference to the "Start Game" button
-const startBtn = document.getElementById("start-btn");
+// Define an object to store selected answers for each question
+const selectedAnswers = {};
 
 // Quiz questions and answers
 const quizData = [
@@ -55,114 +60,6 @@ let selectedAnswer = null;
 // Declare a variable to store the player name globally
 let playerName = "";
 
-// Function to handle the click event on the "Start Game" button
-function handleStartGameClick() {
-    // Get the player's name from the input field
-    playerName = playerNameInput.value;
-
-    if (playerName.trim() !== "") {
-        gameSection.classList.remove("hide");
-        gameSection.classList.add("show");
-        hideAllSectionsExcept(gameSection);
-
-        // Load the first question
-        loadQuestion();
-    } else {
-        // Display an error message if the player name is empty
-        alert("Please enter your name before starting the game.");
-    }
-}
-
-// Function to handle the click event on the "Score" button
-function handleScoreButtonClick() {
-    // Check if the player name is not empty before proceeding
-    if (playerName.trim() !== "") {
-        // Show the score section and hide all other sections
-        scoreSection.classList.remove("hide");
-        scoreSection.classList.add("show");
-        hideAllSectionsExcept(scoreSection);
-
-        // Display the player's name along with the final score
-        const playerNameDisplay = document.createElement("p");
-        playerNameDisplay.textContent = `Player Name: ${playerName || "N/A"}`;
-        scoreSection.appendChild(playerNameDisplay);
-
-        // Display the final score
-        const scoreText = document.createElement("p");
-        const finalScore = calculateFinalScore(); // Implement the logic to calculate the final score
-        scoreText.textContent = `You made ${finalScore} right answers out of ${quizData.length} questions.`;
-        scoreSection.appendChild(scoreText);
-    } else {
-        // Display an error message if the player name is empty
-        alert("Please enter your name before viewing the score.");
-    }
-}
-
-// Function to handle the click event on answer choice buttons
-function handleAnswerClick(event) {
-    const currentQuestion = quizData[currentQuestionIndex];
-    const selectedAnswer = event.target.innerText;
-    // Check if the selected answer is correct
-    if (selectedAnswer === currentQuestion.correctAnswer) {
-        // Apply correct answer style
-        event.target.classList.add("correct");
-        score++; // Increase the score for the correct answer
-    } else {
-        // Apply wrong answer style
-        event.target.classList.add("wrong");
-    }
-
-    setTimeout(function () {
-        event.target.classList.remove("correct", "wrong"); // Remove the styles
-        currentQuestionIndex++; // Move to the next question
-
-        // Check if there are more questions, else show the score section
-        if (currentQuestionIndex < quizData.length) {
-            loadQuestion();
-        } else {
-            // No more questions, go to the score area
-            showScoreSection();
-        }
-    }, 2000); // 2000 milliseconds = 2 seconds
-}
-
-// Function to hide all sections except the provided activeSection
-function hideAllSectionsExcept(activeSection) {
-    const allSections = [introSection, gameSection, scoreSection];
-    allSections.forEach(section => {
-        if (section !== activeSection) {
-            section.classList.add("hide");
-            section.classList.remove("show");
-        }
-    });
-}
-
-// Function to load a new question and choices
-function loadQuestion() {
-    const currentQuestion = quizData[currentQuestionIndex];
-    const questionDisplay = document.getElementById("displayed-question");
-    questionDisplay.textContent = currentQuestion.question;
-
-    // Get references to the answer choice buttons
-    const choice1Btn = document.getElementById("choice1");
-    const choice2Btn = document.getElementById("choice2");
-    const choice3Btn = document.getElementById("choice3");
-    const choice4Btn = document.getElementById("choice4");
-
-    // Set the text for each answer choice button
-    choice1Btn.textContent = currentQuestion.choices[0];
-    choice2Btn.textContent = currentQuestion.choices[1];
-    choice3Btn.textContent = currentQuestion.choices[2];
-    choice4Btn.textContent = currentQuestion.choices[3];
-}
-
-// Function to calculate the final score
-function calculateFinalScore() {
-    // Implement the logic to calculate the final score based on the user's answers
-    // For example, you can keep track of correct answers in a variable and return it here.
-    return score;
-}
-
 // Add event listeners to the answer choice buttons
 const choice1Btn = document.getElementById("choice1");
 const choice2Btn = document.getElementById("choice2");
@@ -201,3 +98,122 @@ restartBtn.addEventListener("click", function () {
 
 // Hide all sections except the intro section initially
 hideAllSectionsExcept(introSection);
+/**
+ * Function to handle the click event on the "Start Game" button
+ */
+function handleStartGameClick() {
+    // Get the player's name from the input field
+    playerName = playerNameInput.value;
+
+    if (playerName.trim() !== "") {
+        gameSection.classList.remove("hide");
+        gameSection.classList.add("show");
+        hideAllSectionsExcept(gameSection);
+
+        // Load the first question
+        loadQuestion();
+    } else {
+        // Display an error message if the player name is empty
+        alert("Please enter your name before starting the game.");
+    }
+}
+/**
+ * Function to handle the click event on the "Score" button
+ */
+function handleScoreButtonClick() {
+    // Check if the player name is not empty before proceeding
+    if (playerName.trim() !== "") {
+        // Show the score section and hide all other sections
+        scoreSection.classList.remove("hide");
+        scoreSection.classList.add("show");
+        hideAllSectionsExcept(scoreSection);
+
+        // Display the player's name along with the final score
+        const playerNameDisplay = document.createElement("p");
+        playerNameDisplay.textContent = `Congratulations ${playerName || "N/A"}`;
+        scoreSection.appendChild(playerNameDisplay);
+
+        // Display the final score
+        const scoreText = document.createElement("p");
+        const finalScore = calculateFinalScore(); // Implement the logic to calculate the final score
+        scoreText.textContent = `You made ${finalScore} right answers out of ${quizData.length} questions.☺`;
+        scoreSection.appendChild(scoreText);
+    }
+}
+/**
+ * Function to handle the click event on answer choice buttons
+ * @param {*} event 
+ */
+function handleAnswerClick(event) {
+    const currentQuestion = quizData[currentQuestionIndex];
+    selectedAnswer = event.target.innerText;
+
+    // Check if the selected answer is correct
+    if (selectedAnswer === currentQuestion.correctAnswer) {
+        // Apply correct answer style
+        event.target.classList.add("correct");
+        score++; // Increase the score for the correct answer
+    } else {
+        // Apply wrong answer style
+        event.target.classList.add("wrong");
+    }
+
+    setTimeout(function () {
+        event.target.classList.remove("correct", "wrong"); // Remove the styles
+        currentQuestionIndex++; // Move to the next question
+
+        // Check if there are more questions, else show the score section
+        if (currentQuestionIndex < quizData.length) {
+            loadQuestion();
+        } else {
+            handleScoreButtonClick(); // Show the score section after the last question
+        }
+    }, 1000); // 1000 milliseconds = 1 second
+}
+/**
+ * Function to hide all sections except the provided activeSection
+ */
+function hideAllSectionsExcept(activeSection) {
+    const allSections = [introSection, gameSection, scoreSection];
+    allSections.forEach(section => {
+        if (section !== activeSection) {
+            section.classList.add("hide");
+            section.classList.remove("show");
+        }
+    });
+}
+/** 
+ * Function to load a new question and choices
+*/
+function loadQuestion() {
+    const currentQuestion = quizData[currentQuestionIndex];
+    const questionDisplay = document.getElementById("displayed-question");
+    questionDisplay.textContent = currentQuestion.question;
+
+    // Get references to the answer choice buttons
+    const choice1Btn = document.getElementById("choice1");
+    const choice2Btn = document.getElementById("choice2");
+    const choice3Btn = document.getElementById("choice3");
+    const choice4Btn = document.getElementById("choice4");
+
+    // Set the text for each answer choice button
+    choice1Btn.textContent = currentQuestion.choices[0];
+    choice2Btn.textContent = currentQuestion.choices[1];
+    choice3Btn.textContent = currentQuestion.choices[2];
+    choice4Btn.textContent = currentQuestion.choices[3];
+}
+/**
+ * Function to count correct answers
+ * @returns score of the correct answers
+ */
+function calculateFinalScore() {
+    let correctAnswers = 0;
+
+    // Loop through the quizData and count the correct answers
+    for (const question of quizData) {
+        if (question.correctAnswer === selectedAnswers[question.question]) {
+            correctAnswers++;
+        }
+    }
+    return score;
+}
