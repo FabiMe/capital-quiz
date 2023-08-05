@@ -101,6 +101,7 @@ restartBtn.addEventListener("click", function () {
 
 // Hide all sections except the intro section initially
 hideAllSectionsExcept(introSection);
+
 /**
  * Function to handle the click event on the "Start Game" button
  */
