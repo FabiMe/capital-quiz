@@ -2,8 +2,8 @@
 
 The capital quiz is a quiz in which the knowledge about the capital is tested. It is only about european capitals.
 
--screenshot-
--link-
+![capital quiz screenshot](https://github.com/FabiMe/capital-quiz/assets/136444209/2283b8f2-cdba-4caf-8149-5654869dde98)
+
 
 # UX
 

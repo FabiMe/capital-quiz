@@ -163,7 +163,7 @@ body {
 #displayed-question {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 25px;
 }
 
 #game li {
@@ -186,7 +186,7 @@ ul {
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 1050px) {
     #intro h1 {
         font-size: 100%;
     }
@@ -200,9 +200,10 @@ ul {
     }
 
     #game {
-        font-size: 100%;
-        padding: 5px 10px;
+        font-size: 90%;
+        padding: 0;
         margin: 0;
+        overflow: hidden;
     }
 
     #choice1 {
@@ -223,6 +224,10 @@ ul {
     #choice4 {
         width: 60%;
         font-size: 100%;
+    }
+
+    #displayed-question {
+        margin-top: 0;
     }
 
 }
