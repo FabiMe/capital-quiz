@@ -144,9 +144,30 @@ After completing the quiz, players can start another round of challenging questi
 
 ## Browser Testing
 
+| Browser         | Outcome                               |
+|-----------------|---------------------------------------|
+| Google Chrome   | All features function as expected     |
+| Mozilla Firefox | All features function as expected     |
+| Safari          | All features function as expected     |
+| Microsoft Edge  | All features function as expected     |
+
 ## Manual Testing
 
+Manual testing was performed to ensure the proper functionality of the Capital Quiz web application. The following test cases cover various scenarios and interactions that users might encounter during their experience with the quiz.
+
+| Description          | Steps to Reproduce                              | Expected Outcome                                  | Actual Outcome | Pass/Fail |
+|----------------------|--------------------------------------------------|----------------------------------------------------|----------------|-----------|
+| Name Input Validation| Enter an empty name and click "Start Quiz"       | An alert message should appear: "Please enter your name before starting the game." | As expected | Pass      |
+| Quiz Start           | Enter a name and click "Start Quiz"             | Quiz question and answer choices should be displayed | As expected | Pass      |
+| Answer Selection     | Select an answer      | Feedback should be displaye (green for right, red for wrong), and the next question should be shown | As expected | Pass      |
+| Exiting Quiz         | Click "Exit the game and go to the score area" during the quiz              | User should be taken to the score area            | As expected | Pass      |
+| Score Display        | Complete all quiz questions  | Final score should be displayed along with user's name | As expected | Pass      |
+| Another Round        | Click "Another Round?" after viewing the score | Quiz should start again | As expected | Pass
+
+
 ## Validator Testing
+
+
 
 ## Bugs
 

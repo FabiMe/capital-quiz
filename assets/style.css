@@ -84,11 +84,6 @@ body {
     margin-top: 2%;
 }
 
-#choice1:hover {
-    background-color: black;
-    color: white;
-}
-
 #choice2 {
     text-align: center;
     width: 20%;
@@ -98,11 +93,6 @@ body {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin-top: 2%;
-}
-
-#choice2:hover {
-    background-color: black;
-    color: white;
 }
 
 #choice3 {
@@ -116,11 +106,6 @@ body {
     margin-top: 2%;
 }
 
-#choice3:hover {
-    background-color: black;
-    color: white;
-}
-
 #choice4 {
     text-align: center;
     width: 20%;
@@ -130,11 +115,6 @@ body {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin-top: 2%;
-}
-
-#choice4:hover {
-    background-color: black;
-    color: white;
 }
 
 .hide {
@@ -155,15 +135,14 @@ body {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
 }
 
 #displayed-question {
     background-color: rgba(255, 255, 255, 0.7);
     padding: 10px;
     border-radius: 25px;
+    transform: translateY(45%);
+    margin-top: 0;
 }
 
 #game li {
@@ -172,19 +151,16 @@ body {
 
 ul {
     display: initial;
-
 }
 
-/* CSS for the correct answer */
+/* Other styles for correct and wrong answers */
 .correct {
     background-color: green;
 }
 
-/* CSS for the wrong answer */
 .wrong {
     background-color: red;
 }
-
 
 @media (max-width: 1050px) {
     #intro h1 {

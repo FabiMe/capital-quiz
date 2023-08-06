@@ -149,38 +149,35 @@ function handleScoreButtonClick() {
  * @param {MouseEvent} click on mouse 
  */
 function handleAnswerClick(event) {
-    // Disable all buttons while showing feedback
     if (buttonsDisabled) {
         return;
     }
 
-    buttonsDisabled = true; // Disable buttons
+    buttonsDisabled = true;
     const currentQuestion = quizData[currentQuestionIndex];
     selectedAnswer = event.target.innerText;
 
-    // Check if the selected answer is correct
+    // Store the selected answer for the current question
+    selectedAnswers[currentQuestion.question] = selectedAnswer;
+
     if (selectedAnswer === currentQuestion.correctAnswer) {
-        // Apply correct answer style
         event.target.classList.add("correct");
-        score++; // Increase the score for the correct answer
     } else {
-        // Apply wrong answer style
         event.target.classList.add("wrong");
     }
 
     setTimeout(function () {
-        event.target.classList.remove("correct", "wrong"); // Remove the styles
-        currentQuestionIndex++; // Move to the next question
+        event.target.classList.remove("correct", "wrong");
+        currentQuestionIndex++;
 
-        // Check if there are more questions, else show the score section
         if (currentQuestionIndex < quizData.length) {
             loadQuestion();
         } else {
-            handleScoreButtonClick(); // Show the score section after the last question
+            handleScoreButtonClick();
         }
 
-        buttonsDisabled = false; // Enable buttons again
-    }, 1000); // 1000 milliseconds = 1 second
+        buttonsDisabled = false;
+    }, 1000);
 }
 /**
  * Function to hide all sections except the provided activeSection
@@ -227,5 +224,5 @@ function calculateFinalScore() {
             correctAnswers++;
         }
     }
-    return score;
+    return correctAnswers; // Return the correctAnswers count
 }
