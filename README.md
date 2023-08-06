@@ -1,12 +1,13 @@
-
-# Capital Quiz
+# <center>Capital Quiz</center>
 
 The Capital Quiz is a web application that tests your knowledge of European capitals through a fun and interactive quiz game.
 
 ![Capital Quiz Screenshot](https://github.com/FabiMe/capital-quiz/assets/136444209/2283b8f2-cdba-4caf-8149-5654869dde98)
 
+[Go to the live page](https://fabime.github.io/capital-quiz/)
 
-# User Stories
+
+# <center>User Stories</center>
 
 ## Visitor Goals
 
@@ -20,7 +21,7 @@ The Capital Quiz is a web application that tests your knowledge of European capi
 - As the site owner, I want to provide an enjoyable quiz experience for visitors.
 - I want to encourage visitors to share and replay the quiz.
 
-# Project Planning
+# <center>Project Planning</center>
 
 In this phase, I want to establish the foundational aspects of my project.
 
@@ -37,7 +38,8 @@ My goal is to create a captivating and educational capital quiz web application 
 
 My target audience includes people interested in geography and general knowledge. This could range from students to casual learners looking for an interactive and entertaining way to test their knowledge.
 
-# Strategy Plane
+
+# <center>Strategy Plane</center>
 
 The strategy plane focuses on defining my approach to meet the project's goals and user needs.
 
@@ -51,10 +53,11 @@ Users need an interactive and intuitive quiz interface that provides an easy way
 - Quiz Interface
 - Feedback
 - Score Display
+  
 
-# Scope Plane
+# <center>Scope Plane</center>
 
-In the scope plane, we define the boundaries of our project and identify what will be included.
+In the scope plane, I define the boundaries of my project and identify what will be included.
 
 ## Included Features
 
@@ -68,7 +71,8 @@ In the scope plane, we define the boundaries of our project and identify what wi
 -Timed Quiz Mode (out of scope for initial version)
 -Advanced game mode for more challenging questions (out of scope for initial version)
 
-# Structure Plane
+
+# <center>Structure Plane</center>
 
 The structure plane involves organizing and arranging the project's components for a seamless user experience.
 
@@ -80,9 +84,9 @@ The structure plane involves organizing and arranging the project's components f
 4. After answering, users receive feedback and can proceed to the next question.
 5. Upon completing the quiz, users are shown their final score.
 
-# Skeleton Plane
+# <center>Skeleton Plane</center>
 
-In the skeleton plane, we create a low-fidelity representation of the application's interface.
+In the skeleton plane, I create a low-fidelity representation of the application's interface.
 
 ## Wireframes
 
@@ -91,9 +95,10 @@ In the skeleton plane, we create a low-fidelity representation of the applicatio
 - Feedback Display
 - Final Score Display
   
-# Surface Plane
 
-In the surface plane, we focus on the visual and interactive aspects of the application.
+# <center>Surface Plane</center>
+
+In the surface plane, I focus on the visual and interactive aspects of the application.
 
 ## Visual Design
 
@@ -101,7 +106,8 @@ Color Scheme: Light blue and white for a clean and inviting feel.
 Typography: 'Lato' for headings, 'Press Start 2P' for a playful touch, and 'Roboto Slab' for body text.
 Imagery: Use relevant images to enhance the user experience.
 
-# Features
+
+# <center>Features</center>
 
 ## Enter Your Name
 
@@ -140,7 +146,8 @@ Upon completing the quiz, players can view their final score, which includes the
 
 After completing the quiz, players can start another round of challenging questions. This button provides a quick way to dive back into the quiz and keep the excitement going.
 
-# Testing
+
+# <center>Testing</center>
 
 ## Browser Testing
 
@@ -167,14 +174,31 @@ Manual testing was performed to ensure the proper functionality of the Capital Q
 
 ## Validator Testing
 
+- HTML / validator.w3.org
+  - No errors were returned
+
+- CSS / jigsaw.w3.org
+  - no errors were returned
+
+- JSHint / jshint.com
+  - no errors were returned
+
+- Lighthouse 
+  - ![lighthouse capital quiz](https://github.com/FabiMe/capital-quiz/assets/136444209/1d5f308a-a6d1-446f-9c46-5aedc89b77da)
 
 
 ## Bugs
 
-# Credits
+- hover function prevented visual feedback from being given to the answered question. 
+bug was fixed by removing the hover function
+
+
+# <center>Credits</center>
 
 ## Content
 
 ## Media
 
-- Background image: [Pexels - City Street](https://www.pexels.com/de-de/foto/blick-auf-die-city-street-258447/)
+- Background image intro : [Pexels - Globe](https://www.pexels.com/de-de/foto/person-die-globus-wirft-1275393/)
+- Background image game : [Pexels - Old City](https://www.pexels.com/de-de/foto/mit-blattern-bedeckte-betonhauser-210017/)
+- Background image score : [Pexels - Winner](https://www.pexels.com/de-de/foto/schachfigur-260024/)
