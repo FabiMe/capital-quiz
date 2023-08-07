@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Press+Start+2P&family=Roboto+Slab:wght@300&display=swap');
 
+/*Global Styles*/
 
+/* set margin to 0 for better handling*/
 body {
-    background-color: lightblue;
     margin: 0;
 }
 
+/* style for the intro section */
 #intro {
     text-align: center;
     margin-top: 5%;
@@ -32,45 +34,28 @@ body {
     border-radius: 15px;
 }
 
-#score {
-    background: url(../assets/images/winner.jpg);
+/* Game Section Styles */
+#game {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 300%;
+    font-weight: bold;
+    background: url(../assets/images/old-city.jpg);
     background-size: cover;
+    background-position: center;
     height: 100vh;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
 }
 
-#score p {
-    font-size: 400%;
-    text-align: center;
-    font-family: 'Roboto Slab', serif;
-    background-color: rgba(255, 255, 255, 0.5);
-    font-weight: bolder;
-
+#game li {
+    list-style-type: none;
 }
 
-#restart-btn {
-    text-align: center;
-    width: 20%;
-    padding: 15px 25px;
-    font-size: 115%;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    margin-top: 2%;
-}
-
-#score-btn {
-    margin-top: 10%;
-    width: 50%;
-    padding: 15px;
-    font-size: 50%;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    margin-top: 2%;
-    font-family: 'Roboto Slab', serif;
+#displayed-question {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 25px;
+    transform: translateY(45%);
+    margin-top: 0;
 }
 
 #choice1 {
@@ -117,6 +102,53 @@ body {
     margin-top: 2%;
 }
 
+ul {
+    display: initial;
+}
+
+/* Score Section Styles */
+#score {
+    background: url(../assets/images/winner.jpg);
+    background-size: cover;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+#score p {
+    font-size: 400%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-weight: bolder;
+
+}
+
+#restart-btn {
+    text-align: center;
+    width: 20%;
+    padding: 15px 25px;
+    font-size: 115%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+}
+
+#score-btn {
+    margin-top: 10%;
+    width: 50%;
+    padding: 15px;
+    font-size: 50%;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 2%;
+    font-family: 'Roboto Slab', serif;
+}
+
+/* Hide and Show Classes */
 .hide {
     display: none;
 }
@@ -126,34 +158,7 @@ body {
     box-sizing: border-box;
 }
 
-#game {
-    text-align: center;
-    font-family: 'Roboto Slab', serif;
-    font-size: 300%;
-    font-weight: bold;
-    background: url(../assets/images/old-city.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-}
-
-#displayed-question {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 25px;
-    transform: translateY(45%);
-    margin-top: 0;
-}
-
-#game li {
-    list-style-type: none;
-}
-
-ul {
-    display: initial;
-}
-
-/* Other styles for correct and wrong answers */
+/* Correct and Wrong Button Styling */
 .correct {
     background-color: green;
 }
@@ -162,6 +167,8 @@ ul {
     background-color: red;
 }
 
+/* Responsive Styles */
+/* Media query for smaller screens */
 @media (max-width: 1050px) {
     #intro h1 {
         font-size: 100%;
@@ -169,10 +176,7 @@ ul {
 
     #intro p {
         padding: 5px 10px;
-        /* Adjust padding for smaller screens */
         font-size: 50%;
-        /* Adjust font size for smaller screens */
-
     }
 
     #game {

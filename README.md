@@ -102,8 +102,8 @@ In the surface plane, I focus on the visual and interactive aspects of the appli
 
 ## Visual Design
 
-Color Scheme: Light blue and white for a clean and inviting feel.
-Typography: 'Lato' for headings, 'Press Start 2P' for a playful touch, and 'Roboto Slab' for body text.
+Color Scheme: white background with black lettering to create a legible contrast and not be distracting.<br>
+Typography: 'Lato' for headings, 'Press Start 2P' for a playful touch, and 'Roboto Slab' for body text.<br>
 Imagery: Use relevant images to enhance the user experience.
 
 
