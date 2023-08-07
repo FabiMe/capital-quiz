@@ -68,8 +68,8 @@ In the scope plane, I define the boundaries of my project and identify what will
   
 ## Excluded Features
 
--Timed Quiz Mode (out of scope for initial version)
--Advanced game mode for more challenging questions (out of scope for initial version)
+- Timed Quiz Mode (out of scope for initial version)
+- Advanced game mode for more challenging questions (out of scope for initial version)
 
 
 # <center>Structure Plane</center>
@@ -102,7 +102,7 @@ In the surface plane, I focus on the visual and interactive aspects of the appli
 
 ## Visual Design
 
-Color Scheme: white background with black lettering to create a legible contrast and not be distracting.<br>
+Color Scheme: White background with black lettering to create a legible contrast and not be distracting.<br>
 Typography: 'Lato' for headings, 'Press Start 2P' for a playful touch, and 'Roboto Slab' for body text.<br>
 Imagery: Use relevant images to enhance the user experience.
 
@@ -192,13 +192,22 @@ Manual testing was performed to ensure the proper functionality of the Capital Q
 - hover function prevented visual feedback from being given to the answered question. 
 bug was fixed by removing the hover function
 
+# <center>Deployment</center>
+
+- This website was deployed on GitHub pages. The following steps were used.
+  - Open the GitHub repository and navigate to settings
+  - Navigate to Pages
+  - Set Brunches from none to main
+  - Insert custom URL
+  - Deploy site
+  - GitHub provides the URL to the completed website
 
 # <center>Credits</center>
 
 ## Content
 
+- W3schools [Media query](https://www.w3schools.com/css/css_rwd_mediaqueries.asp)
 ## Media
-
 - Background image intro : [Pexels - Globe](https://www.pexels.com/de-de/foto/person-die-globus-wirft-1275393/)
 - Background image game : [Pexels - Old City](https://www.pexels.com/de-de/foto/mit-blattern-bedeckte-betonhauser-210017/)
 - Background image score : [Pexels - Winner](https://www.pexels.com/de-de/foto/schachfigur-260024/)
